@@ -19,7 +19,37 @@ struct student {
 	char name[10];
 	int score;
 };
-
+void stringcopy(char *str1, char *str2)
+{
+	for (int i = 0; i < 10; i++)
+	{
+		str1[i] = str2[i];
+	}
+}
+void swap(struct student *first, struct student *second)
+{
+	int temp; char string[10];
+	temp = first->score;
+	first->score = second->score;
+	second->score = temp;
+	stringcopy(string, first->name);
+	stringcopy(first->name, second->name);
+	stringcopy(second->name, string);
+}
 void * scoresDescendingSort(struct student *students, int len) {
+	int i, j;
+	if (students != NULL&&len > 0)
+	{
+		for (i = 0; i < len; i++)
+		{
+			for (j = i + 1; j < len; j++)
+			{
+				if (students[i].score < students[j].score)
+				{
+					swap(&students[i], &students[j]);
+				}
+			}
+		}
+	}
 	return NULL;
 }

@@ -15,5 +15,26 @@ NOTES: Don't create new array, try to change the input array.
 
 void * removeArrayDuplicates(int *Arr, int len)
 {
+	int i, index = 0, frequencyArray[10];
+	if (Arr != NULL&&len > 0)
+	{
+		for (i = 0; i < 10; i++)
+		{
+			frequencyArray[i] = 0;
+		}
+		for (i = 0; i < len; i++)
+		{
+			if (frequencyArray[Arr[i]] == 0)
+				frequencyArray[Arr[i]] ++;
+		}
+		for (i = 0; i < 10; i++)
+		{
+			if (frequencyArray[i] != 0)
+			{
+				Arr[index] = i;
+				index++;
+			}
+		}
+	}
 	return NULL;
 }
